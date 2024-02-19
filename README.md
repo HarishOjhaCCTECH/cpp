@@ -1,4 +1,7 @@
 # cpp
+Purpose: to create a GeomVector and create functions for below described:
+![image](https://github.com/HarishOjhaCCTECH/cpp/assets/158055492/d8fa19a6-1774-46cc-9934-a2087dd2d588)
+
 input
 ![image](https://github.com/HarishOjhaCCTECH/cpp/assets/158055492/ddc57575-1910-441f-bca2-17869a7c2da6)
 pics of output
