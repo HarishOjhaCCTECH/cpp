@@ -1,8 +1,8 @@
 # cpp
-##1. Purpose: to create a GeomVector and create functions for below described:
+## 1. Purpose: to create a GeomVector and create functions for below described:
 ![image](https://github.com/HarishOjhaCCTECH/cpp/assets/158055492/d8fa19a6-1774-46cc-9934-a2087dd2d588)
 
-##2. input
+## 2. input
 ![image](https://github.com/HarishOjhaCCTECH/cpp/assets/158055492/ddc57575-1910-441f-bca2-17869a7c2da6)
 pics of output
 ![image](https://github.com/HarishOjhaCCTECH/cpp/assets/158055492/00afc764-9dee-46ce-866c-ca099791218d)
@@ -19,7 +19,7 @@ pics of output
 ![image](https://github.com/HarishOjhaCCTECH/cpp/assets/158055492/7d71992f-8542-40b8-a0aa-76db6b0eda40)
 ![image](https://github.com/HarishOjhaCCTECH/cpp/assets/158055492/1b4750f5-2402-4c7b-8e87-9fd92d1f4c10)
 
-##3. commands for gnuplot
+## 3. commands for gnuplot
 for cross product, vector addition
 
 splot 'D:\harish_ojha_workspace\cpp_assignments\t21\txtFiles\firstVector.txt' with vectors linewidth 3 linecolor "blue", \
@@ -29,7 +29,7 @@ splot 'D:\harish_ojha_workspace\cpp_assignments\t21\txtFiles\firstVector.txt' wi
 
 
 
-for normalisation, scalar addition,scalar multiplication, SETENGTH
+for normalisation, scalar addition,scalar multiplication, setlength
 
 splot 'D:\harish_ojha_workspace\cpp_assignments\t21\txtFiles\firstVector.txt' with vectors linewidth 3 linecolor "blue", \
       'D:\harish_ojha_workspace\cpp_assignments\t21\txtFiles\resultant.txt' with vectors linewidth 3 linecolor "red"
