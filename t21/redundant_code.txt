@@ -1,0 +1,151 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+ 
+class Vector
+{
+public:
+    Vector(double x,double y,double z);
+    ~Vector();
+ 
+    double dotProduct(const Vector &other) const;
+    Vector crossProduct(const Vector& other) const;
+    Vector add(const Vector& other) const;
+    double magnitude() const;
+    Vector normalize() const;
+    bool isEqual(const Vector& other) const;
+    Vector addScalar(double scalar) const;
+    Vector scalarMultiplication(double scalar) const;
+    double angleBetween(const Vector& other) const;
+    double angleWithAxis(int axis) const;
+    double distanceBetweenVectors(const Vector& other) const;
+    Vector projection(const Vector& onto) const;
+    Vector directionCosines() const;
+    Vector subtractScalar(double scalar) const;
+    Vector scalarDivision(double scalar) const;
+    Vector setLength(double newLength) const;
+ 
+private:
+    double x;
+    double y;
+    double z;
+};
+ 
+Vector::Vector(double x, double y, double z) : x(x), y(y), z(z) {}
+ 
+Vector::~Vector() {}
+ 
+double Vector::dotProduct(const Vector &other) const {
+    return (this->x * other.x) + (this->y * other.y) + (this->z * other.z);
+}
+ 
+Vector Vector::crossProduct(const Vector& other) const {
+    double newX = (this->y * other.z) - (this->z * other.y);
+    double newY = (this->z * other.x) - (this->x * other.z);
+    double newZ = (this->x * other.y) - (this->y * other.x);
+    return Vector(newX, newY, newZ);
+}
+ 
+Vector Vector::add(const Vector& other) const {// change name
+    return Vector(this->x + other.x, this->y + other.y, this->z + other.z);
+}
+ 
+double Vector::magnitude() const {
+    return sqrt(this->x*this->x + this->y*this->y + this->z*this->z);
+}
+ 
+Vector Vector::normalize() const {
+    double mag = magnitude();
+    return Vector(this->x/mag, this->y/mag, this->z/mag);
+}
+ 
+bool Vector::isEqual(const Vector& other) const {
+    return (this->x == other.x) && (this->y == other.y) && (this->z == other.z);
+}
+ 
+Vector Vector::addScalar(double scalar) const {
+    return Vector(this->x + scalar, this->y + scalar, this->z + scalar);
+}
+ 
+Vector Vector::scalarMultiplication(double scalar) const {
+    return Vector(this->x * scalar, this->y * scalar, this->z * scalar);
+}
+ 
+double Vector::angleBetween(const Vector& other) const {
+    double dot = dotProduct(other);
+    double magProduct = magnitude() * other.magnitude();
+    return acos(dot / magProduct);
+}
+ 
+double Vector::angleWithAxis(int axis) const {
+    if (axis == 0) return acos(this->x / magnitude());
+    else if (axis == 1) return acos(this->y / magnitude());
+    else if (axis == 2) return acos(this->z / magnitude());
+    else return 0;
+}
+ 
+double Vector::distanceBetweenVectors(const Vector& other) const {
+    double dx = x - other.x;
+    double dy = y - other.y;
+    double dz = z - other.z;
+    return sqrt(dx*dx + dy*dy + dz*dz);
+}
+ 
+Vector Vector::projection(const Vector& onto) const {
+    double dot = dotProduct(onto);
+    double ontoMag = onto.magnitude();
+    return onto.scalarMultiplication(dot / (ontoMag * ontoMag));
+}
+ 
+Vector Vector::directionCosines() const {
+    double mag = magnitude();
+    return Vector(this->x / mag, this->y / mag, this->z / mag);
+}
+ 
+Vector Vector::subtractScalar(double scalar) const {
+    return Vector(this->x - scalar, this->y - scalar, this->z - scalar);
+}
+ 
+Vector Vector::scalarDivision(double scalar) const {
+    return Vector(this->x / scalar, this->y / scalar, this->z / scalar);
+}
+ 
+Vector Vector::setLength(double newLength) const {
+    double mag = magnitude();
+    if (mag == 0) return *this;
+    return scalarMultiplication(newLength / mag);
+}
+ 
+int main()
+{
+    return 0;
+}
+
+
+
+/* bool GeomVector::operator<(const GeomVector & other)const{
+    return (mIcoefficient < other.mIcoefficient && mJcoefficient < other.mJcoefficient && mKcoefficient < other.mKcoefficient);
+}
+bool GeomVector::operator>(const GeomVector & other)const{
+    return (mIcoefficient > other.mIcoefficient && mJcoefficient > other.mJcoefficient && mKcoefficient > other.mKcoefficient);
+} */
+/* GeomVector GeomVector::operator+(const GeomVector & other)const{
+    // it only adds where both the GeomVectors are are strting from the same point and 
+    GeomVector tempV;
+    tempV.mIcoefficient = this->mIcoefficient+other.mIcoefficient;
+    tempV.mJcoefficient = this->mJcoefficient+other.mJcoefficient;
+    tempV.mKcoefficient = this->mKcoefficient+other.mKcoefficient;
+    Point3d p;
+    temp
+    tempV.mStart
+}
+GeomVector GeomVector::operator-(const GeomVector & other)const{
+    GeomVector tempV((mIcoefficient-other.mIcoefficient), (mJcoefficient-other.mJcoefficient), (mKcoefficient-other.mKcoefficient)) ;
+    return tempV;
+} */
+/* 
+
+double scalarTripleProduct(GeomVector a, GeomVector b, GeomVector c){
+    GeomVector tempV = crossProduct(b,c);
+    return ::dotProduct(a,tempV);
+} */
